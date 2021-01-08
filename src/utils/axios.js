@@ -20,16 +20,17 @@ class Http {
   }
   // 添加拦截器
   setInterceptor(instance) {
-    instance.interceptor.request.use(config => {
+    instance.interceptors.request.use(config => {
       return config;
     });
-    instance.interceptor.response.use(
+    instance.interceptors.response.use(
       res => {
         if (res.status == 200) {
+          const { data } = res;
           if (res.data.error === 1) {
-            return Promise.reject(res.errorMsg);
+            return Promise.reject(data.errorMsg);
           }
-          return Promise.resolve(res.data);
+          return Promise.resolve(data.data);
         } else {
           // 错误码统一处理
           switch (res.status) {

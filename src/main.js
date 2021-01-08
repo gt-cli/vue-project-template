@@ -4,6 +4,11 @@ import router from "./router";
 import store from "./store";
 import "./plugins/element.js";
 
+/*
+ * mock接口
+ */
+import "../mock/index";
+
 Vue.config.productionTip = false;
 
 new Vue({
