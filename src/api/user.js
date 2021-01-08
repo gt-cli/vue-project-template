@@ -1,5 +1,5 @@
-import axios from "../utils/axios";
+import axios from '../utils/axios'
 
 export function getUserList() {
-  return axios.get("vue-project-template/user/get");
+  return axios.get('vue-project-template/user/get')
 }

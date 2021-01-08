@@ -1,7 +1,7 @@
 export default [
   {
-    path: "/post",
-    name: "Post",
-    component: () => import("@/views/article/post.vue")
+    path: '/post',
+    name: 'Post',
+    component: () => import('@/views/article/post.vue')
   }
-];
+]

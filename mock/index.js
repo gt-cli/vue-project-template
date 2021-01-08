@@ -1,1 +1,1 @@
-import "./modules/user";
+import './modules/user'

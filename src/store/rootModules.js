@@ -1,8 +1,8 @@
 export default {
   state: {
-    name: "root"
+    name: 'root'
   },
   mutations: {},
   actions: {},
   modules: {}
-};
+}
