@@ -12,7 +12,8 @@
 <script>
 // import { getUserList } from '@/api/user/index'
 import * as types from '@/store/action-types/home'
-import { mapActions, mapGetters } from 'vuex'
+import { createNamespacedHelpers, mapGetters as rootMapGetters } from 'vuex'
+const { mapActions, mapGetters } = createNamespacedHelpers('home')
 export default {
   name: 'Home',
   data() {
@@ -21,18 +22,22 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...rootMapGetters([
       'name'
     ]),
-    ...mapGetters('home', {
+    ...mapGetters({
       userList: 'userList'
     })
   },
-  created() {
-    this[types.SET_USER_LIST]()
+  async created() {
+    try {
+      await this[types.SET_USER_LIST]()
+    } catch (e) {
+      console.log(e)
+    }
   },
   methods: {
-    ...mapActions('home', [
+    ...mapActions([
       types.SET_USER_LIST
     ])
   }
