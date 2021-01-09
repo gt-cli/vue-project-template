@@ -1,4 +1,4 @@
-import * as types from './action-types/request'
+import types from './action-types/index'
 export default {
   state: {
     name: 'root',

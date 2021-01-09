@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '@/store/index'
-import * as types from '@/store/action-types/request'
+import types from '@/store/action-types/index'
 
 /**
  * 封装的目的是封装公共的拦截器，每一个实例也可以有单独的自己的拦截器
@@ -25,10 +25,15 @@ class Http {
   // 添加拦截器
   setInterceptor(instance, url) {
     instance.interceptors.request.use(config => {
+      // 添加cancel token
       const Cancel = axios.CancelToken
       config.cancelToken = new Cancel(c => {
         store.commit(types.SET_REQUEST_TOKEN, c)
       })
+
+      // 添加jwt
+      // config.headers.authorization = `Bearer ${token}`
+
       return config
     })
     instance.interceptors.response.use(

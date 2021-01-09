@@ -2,6 +2,9 @@ export default [
   {
     path: '/',
     name: 'Path',
+    meta: {
+      needLogin: true
+    },
     component: () => import(/* webpackChunkName:'home'*/'@/views/home/index.vue')
   },
   {

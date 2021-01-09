@@ -1,4 +1,4 @@
-import * as types from '../action-types/home'
+import types from '../action-types/index'
 import { getUserList } from '@/api/home/index'
 
 export default {

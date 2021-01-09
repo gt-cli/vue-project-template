@@ -17,3 +17,32 @@ Mock.mock('vue-project-template/user/get', 'get', () => {
     errorMsg: ''
   }
 })
+
+Mock.mock('vue-project-template/user/validate', 'get', () => {
+  const users = {
+    name: 'admin',
+    token: Random.guid(),
+    created: Random.date()
+  }
+  return {
+    error: 0,
+    code: 200,
+    data: users,
+    errorMsg: ''
+  }
+})
+
+Mock.mock('vue-project-template/user/login', 'post', (data) => {
+  console.log(data)
+  const users = {
+    name: 'admin',
+    token: Random.guid(),
+    created: Random.date()
+  }
+  return {
+    error: 0,
+    code: 200,
+    data: users,
+    errorMsg: ''
+  }
+})
