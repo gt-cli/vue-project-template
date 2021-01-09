@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-table :data="tableData" style="width: 100%">
+    {{ name }}
+    <el-table :data="userList" style="width: 100%">
       <el-table-column prop="id" label="编号" width="180" />
       <el-table-column prop="name" label="姓名" width="180" />
       <el-table-column prop="age" label="年龄" />
@@ -9,7 +10,9 @@
 </template>
 
 <script>
-import { getUserList } from '@/api/user'
+// import { getUserList } from '@/api/user/index'
+import * as types from '@/store/action-types/home'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Home',
   data() {
@@ -17,14 +20,21 @@ export default {
       tableData: []
     }
   },
+  computed: {
+    ...mapGetters([
+      'name'
+    ]),
+    ...mapGetters('home', {
+      userList: 'userList'
+    })
+  },
   created() {
-    this.getUserList()
+    this[types.SET_USER_LIST]()
   },
   methods: {
-    async getUserList() {
-      const res = await getUserList()
-      this.tableData = res || []
-    }
+    ...mapActions('home', [
+      types.SET_USER_LIST
+    ])
   }
 }
 </script>

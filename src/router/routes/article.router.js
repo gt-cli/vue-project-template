@@ -2,6 +2,6 @@ export default [
   {
     path: '/post',
     name: 'Post',
-    component: () => import('@/views/article/post.vue')
+    component: () => import(/* webpackChunkName:'post'*/'@/views/article/post.vue')
   }
 ]

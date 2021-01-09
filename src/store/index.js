@@ -15,6 +15,4 @@ files.keys().forEach(key => {
   module[moduleName].namespaced = true
 })
 
-export default new Vuex.Store({
-  rootModules
-})
+export default new Vuex.Store(rootModules)
