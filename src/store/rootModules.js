@@ -1,11 +1,21 @@
+import * as types from './action-types/request'
 export default {
   state: {
-    name: 'root'
+    name: 'root',
+    axiosTokens: []
   },
   getters: {
     name: state => state.name
   },
-  mutations: {},
+  mutations: {
+    [types.SET_REQUEST_TOKEN](state, payload) {
+      if (payload === 'clear') {
+        state.axiosTokens = []
+      } else {
+        state.axiosTokens = [...state.axiosTokens, payload]
+      }
+    }
+  },
   actions: {},
   modules: {}
 }

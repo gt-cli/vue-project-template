@@ -1,6 +1,7 @@
 import axios from 'axios'
-// import { Loading } from 'element-ui'
-// let loadingInstance = null
+import store from '@/store/index'
+import * as types from '@/store/action-types/request'
+
 /**
  * 封装的目的是封装公共的拦截器，每一个实例也可以有单独的自己的拦截器
  * 创建一个单独的实例，每次请求都是使用这个方法来创建实例
@@ -17,31 +18,21 @@ class Http {
     return {
       timeout: this.timeout,
       baseUrl: this.baseUrl,
-      haeders: this.headers,
+      headers: this.headers,
       ...options
     }
   }
   // 添加拦截器
   setInterceptor(instance, url) {
     instance.interceptors.request.use(config => {
-      // if (Object.keys(this.queue).length === 0) {
-      //   // 当前是所有请求中的第一个
-      //   // 实例话一个 loading 实例
-      //   loadingInstance = Loading.service({
-      //     fullscreen: true
-      //   })
-      // }
-      // this.queue[url] = true
+      const Cancel = axios.CancelToken
+      config.cancelToken = new Cancel(c => {
+        store.commit(types.SET_REQUEST_TOKEN, c)
+      })
       return config
     })
     instance.interceptors.response.use(
       res => {
-        // 删除已经执行的请求标记
-        // delete this.queue[url]
-        // if (Object.keys(this.queue).length === 0) {
-        //   // 所有请求执行结束
-        //   loadingInstance.close()
-        // }
         if (res.status === 200) {
           const { data } = res
           if (res.data.error === 1) {
@@ -61,11 +52,6 @@ class Http {
         }
       },
       err => {
-        // 删除已经执行的请求标记
-        // delete this.queue[url]
-        // if (Object.keys(this.queue).length === 0) {
-        //   loadingInstance.close()
-        // }
         Promise.reject(err)
       }
     )

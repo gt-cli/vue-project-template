@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import hooks from './hooks'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,12 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// 给路由添加多个钩子，每个钩子实现一个具体的功能
+Object.values(hooks).forEach(hook => {
+  // 绑定 hook 中的 this 是路由的实例
+  router.beforeEach(hook.bind(router))
 })
 
 export default router

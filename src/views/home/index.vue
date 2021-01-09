@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import { getUserList } from '@/api/user/index'
 import * as types from '@/store/action-types/home'
 import { createNamespacedHelpers, mapGetters as rootMapGetters } from 'vuex'
 const { mapActions, mapGetters } = createNamespacedHelpers('home')
