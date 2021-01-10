@@ -1,5 +1,5 @@
 import store from '@/store/index'
-import types from '@/store/action-types/index'
+import * as types from '@/store/action-types/index'
 
 export default {
   'cancelToken': async function(to, form, next) {

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import types from '@/store/action-types/index'
+import * as types from '@/store/action-types/index'
 import { createNamespacedHelpers, mapGetters as rootMapGetters } from 'vuex'
 const { mapActions, mapGetters } = createNamespacedHelpers('home')
 export default {

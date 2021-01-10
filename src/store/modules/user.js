@@ -1,4 +1,4 @@
-import types from '../action-types/index'
+import * as types from '../action-types/index'
 import { validate, login } from '@/api/user/index'
 import { setLocal, getLocal } from '@/utils/storage-helper'
 export default {

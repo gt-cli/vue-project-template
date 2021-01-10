@@ -6,7 +6,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-import types from '@/store/action-types/index'
+import * as types from '@/store/action-types/index'
 const { mapActions } = createNamespacedHelpers('user')
 export default {
   name: 'Home',
