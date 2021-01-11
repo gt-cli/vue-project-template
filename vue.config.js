@@ -1,4 +1,4 @@
-const setting = require('./src/config/setting')
+const setting = require('./config/setting')
 
 const path = require('path')
 
