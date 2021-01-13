@@ -49,5 +49,13 @@ export default {
     } else {
       next()
     }
+  },
+  'createWebsocket': async function(to, form, next) {
+    if (store.state.user.hasPermission && !store.state.ws) {
+      // store.dispatch(`websocket/${types.CREATE_WEBSOCKET}`)
+      next()
+    } else {
+      next()
+    }
   }
 }
