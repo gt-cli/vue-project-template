@@ -1,7 +1,7 @@
 export default [
   {
     path: '/',
-    name: 'Path',
+    name: 'Home',
     meta: {
       needLogin: true
     },

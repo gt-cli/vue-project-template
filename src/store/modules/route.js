@@ -23,11 +23,13 @@ function filterRouter(authList) {
 }
 export default {
   state: {
+    routes: [],
     menuPermission: false // 默认没有处理菜单
   },
   mutations: {
     [types.SET_ROUTE](state, payload) {
-      state.routes = payload
+      const r = router.options.routes
+      state.routes = [...r, ...state.routes, ...payload]
     },
     [types.SET_MENU_PERMISSION](state, payload) {
       state.menuPermission = payload
@@ -41,6 +43,7 @@ export default {
         // const route = router.options.routes.find(item => item.path === '/manager')
         console.log(perRoutes)
         router.addRoutes(perRoutes)
+        commit(types.SET_ROUTE, perRoutes)
         commit(types.SET_MENU_PERMISSION, true)
       } else {
         // 没有权限也要设置成有权限了

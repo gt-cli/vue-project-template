@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-menus />
     <el-table :data="userList" style="width: 100%">
       <el-table-column prop="id" label="编号" width="180" />
       <el-table-column prop="name" label="姓名" width="180" />
@@ -9,11 +10,15 @@
 </template>
 
 <script>
+import ElMenus from '@/components/Menu/index'
 import * as types from '@/store/action-types/index'
 import { createNamespacedHelpers, mapGetters as rootMapGetters } from 'vuex'
 const { mapActions, mapGetters } = createNamespacedHelpers('home')
 export default {
   name: 'Home',
+  components: {
+    ElMenus
+  },
   data() {
     return {
       tableData: []
