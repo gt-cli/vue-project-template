@@ -33,5 +33,21 @@ export default {
         next()
       }
     }
+  },
+  'menuPermission': async function(to, form, next) {
+    if (store.state.user.hasPermission) {
+      // 是否添加过路由
+      // 如果已经添加过了，继续往下走
+      if (!store.state.route.menuPermission) {
+        // 获取最新路由权限，根据用户权限来获取
+        store.dispatch(`route/${types.SET_ROUTE}`) // 添加路由
+        next({ ...to, replace: true }) // hack
+      } else {
+        // 已经获取过菜单权限了或者页面加载完毕后
+        next()
+      }
+    } else {
+      next()
+    }
   }
 }

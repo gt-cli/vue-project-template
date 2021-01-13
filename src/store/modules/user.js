@@ -3,9 +3,8 @@ import { validate, login } from '@/api/user/index'
 import { setLocal, getLocal } from '@/utils/storage-helper'
 export default {
   state: {
-    name: 'user',
-    userInfo: {},
-    hasPermission: false
+    userInfo: {}, // 存储用户数据
+    hasPermission: false // 判断有没有权限
   },
   mutations: {
     [types.SET_USER](state, payload) {

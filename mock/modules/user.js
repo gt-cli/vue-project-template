@@ -20,9 +20,20 @@ Mock.mock('vue-project-template/user/get', 'get', () => {
 
 Mock.mock('vue-project-template/user/validate', 'get', () => {
   const users = {
+    authList: [
+      { auth: 'manager', id: 1, name: 'manager', path: '/manager', pid: '-1', role: '' }
+    ],
+    avatar: '',
+    crated: Random.date(),
+    exp: 1598450154,
+    gender: -1,
+    iat: 1598446105,
     name: 'admin',
-    token: Random.guid(),
-    created: Random.date()
+    role: '5f3e2c3e1d73309876e088',
+    status: 0,
+    token: '5f3e2c3e1d73309876e088',
+    updated: Random.date(),
+    username: 'admin'
   }
   return {
     error: 0,
@@ -35,9 +46,18 @@ Mock.mock('vue-project-template/user/validate', 'get', () => {
 Mock.mock('vue-project-template/user/login', 'post', (data) => {
   console.log(data)
   const users = {
+    authList: [],
+    avatar: '',
+    crated: Random.date(),
+    exp: 1598450154,
+    gender: -1,
+    iat: 1598446105,
     name: 'admin',
-    token: Random.guid(),
-    created: Random.date()
+    role: '5f3e2c3e1d73309876e088',
+    status: 0,
+    token: '5f3e2c3e1d73309876e088',
+    updated: Random.date(),
+    username: 'admin'
   }
   return {
     error: 0,
