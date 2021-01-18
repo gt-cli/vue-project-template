@@ -6,7 +6,18 @@ export default [
       needLogin: true,
       auth: 'manager'
     },
-    component: () => import(/* webpackChunkName:'manager'*/'@/views/manager/index.vue')
+    component: () => import(/* webpackChunkName:'manager'*/'@/views/manager/index.vue'),
+    children: [
+      {
+        path: 'user',
+        name: 'MangerUser',
+        meta: {
+          needLogin: true,
+          auth: 'manager'
+        },
+        component: () => import(/* webpackChunkName:'manger-user'*/'@/views/user/index.vue')
+      }
+    ]
   },
   {
     path: '/person',
