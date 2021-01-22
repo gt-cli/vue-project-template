@@ -1,6 +1,9 @@
 import axios from 'axios'
 import store from '@/store/index'
 import * as types from '@/store/action-types/index'
+import qs from 'qs'
+import { codeMessage } from './error'
+import router from '@/router/index'
 
 /**
  * 封装的目的是封装公共的拦截器，每一个实例也可以有单独的自己的拦截器
@@ -34,30 +37,51 @@ class Http {
       // 添加jwt
       // config.headers.authorization = `Bearer ${token}`
 
+      // 数据格式化
+      if (config.method.toUpperCase() !== 'GET') {
+        config.data = qs.stringify(config.data)
+      }
       return config
+    }, err => {
+      return Promise.reject(err)
     })
+
     instance.interceptors.response.use(
       res => {
-        if (res.status === 200) {
-          const { data } = res
-          if (res.data.error === 1) {
+        const { status, data } = res
+        if (status === 200) {
+          if (data.error === 1) {
             return Promise.reject(data.errorMsg)
           }
           return Promise.resolve(data.data)
         } else {
           // 错误码统一处理
-          switch (res.status) {
-            case 401:
-              return Promise.reject(`401`)
-            case 500:
-              return Promise.reject(`server error`)
-            default:
-              return Promise.reject(`unknown`)
-          }
+          const statusText = codeMessage[status] || '服务端异常。'
+          return Promise.reject(statusText)
         }
       },
       err => {
-        Promise.reject(err)
+        if (err) {
+          // 请求配置发生的错误
+          if (!err.response) {
+            return console.log('err', err.message)
+          }
+
+          // 获取状态码
+          const status = err.response.status
+          const statusText = codeMessage[status] || err.response.statusText
+          console.log(`${status}: ${statusText}`)
+
+          // 错误状态处理
+          if (status === 401) {
+            router.push('/login')
+          } else if (status === 403) {
+            router.push('/login')
+          } else if (status >= 404 && status < 422) {
+            router.push('/404')
+          }
+        }
+        return Promise.reject(err)
       }
     )
   }
