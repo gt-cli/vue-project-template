@@ -1,0 +1,32 @@
+.login {
+  $bg-color: rgb(79, 173, 204);
+  $bg-img: '../../../assets/img/login-bg.jpeg';
+  $card-bg-color: rgba(0,0,0,0.5);
+  $card-color: #FFFFFF;
+  $input-bg-color: #EEEEEE;
+  background-color: $bg-color;
+  background: url($bg-img) no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .el-card {
+    width: 450px;
+    background: $card-bg-color;
+    background-position: center;
+    border-color: transparent;
+    color: $card-color;
+    &__header {
+      padding: 0;
+      border-bottom: none;
+    }
+    input {
+      background: $input-bg-color;
+    }
+    .el-button {
+      width: 100%;
+    }
+  }
+}
