@@ -63,10 +63,13 @@ src
 ├─api          # 存放接口
 ├─assets       # 存放资源
 ├─components   # 组件
+├─directives   # 自定义指令
+├─filters      # 自定义过滤器
 ├─plugins      # 生成的插件
 ├─config       # 存放配置文件
 ├─router       # 存放路由配置
 ├─store        # 存放vuex配置
+├─style        # 存放共用样式
 ├─utils        # 存放工具方法
 └─views        # 存放Vue页面
 ```
