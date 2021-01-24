@@ -26,7 +26,7 @@
 $ npm install @vue/cli -g 
 ```
 
-1
+
 
 **通过** `**vue create**` **创建项目**
 

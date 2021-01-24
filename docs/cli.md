@@ -273,7 +273,7 @@ module.exports = async (projectName, cmd) => {
 npm i axios
 ```
 
-1
+
 
 这里借助下 `github` 的 [英文api](https://developer.github.com/v3/) （[中文api](https://docs.github.com/cn/rest)）
 
@@ -475,7 +475,7 @@ module.exports = async (projectName, cmd) => {
 npm i download-git-repo
 ```
 
-1
+
 
 很遗憾的是这个方法不是promise方法，没关系我们自己包装一下
 
@@ -526,7 +526,7 @@ const target = await wrapFetchAddLoding(download, 'download template')(repo, tag
 npm i ncp
 ```
 
-1
+
 
 像这样:
 
