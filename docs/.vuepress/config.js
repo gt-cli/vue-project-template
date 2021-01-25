@@ -17,7 +17,8 @@ module.exports = {
     smoothScroll: true,
     nav: [
       { text: 'Home', link: '/', icon: 'reco-home' },
-      { text: 'cli', link: '/cli' }
+      { text: 'cli', link: '/cli' },
+      { text: 'rule', link: '/rule' }
     ]
   },
   markdown: {
