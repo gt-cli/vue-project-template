@@ -11,39 +11,13 @@
 
 <script>
 import ElMenus from '@/components/Menu/index'
-import * as types from '@/store/action-types/index'
-import { createNamespacedHelpers, mapGetters as rootMapGetters } from 'vuex'
-const { mapActions, mapGetters } = createNamespacedHelpers('home')
+import options from './options/index'
 export default {
   name: 'Home',
   components: {
     ElMenus
   },
-  data() {
-    return {
-      tableData: []
-    }
-  },
-  computed: {
-    ...rootMapGetters([
-      'name'
-    ]),
-    ...mapGetters({
-      userList: 'userList'
-    })
-  },
-  async created() {
-    try {
-      await this[types.SET_USER_LIST]()
-    } catch (e) {
-      console.log(e)
-    }
-  },
-  methods: {
-    ...mapActions([
-      types.SET_USER_LIST
-    ])
-  }
+  ...options
 }
 </script>
 
