@@ -10,10 +10,10 @@ import router from '@/router/index'
  * 创建一个单独的实例，每次请求都是使用这个方法来创建实例
  */
 class Http {
-  constructor() {
+  constructor(url, headers = {}) {
     this.timeout = 3000 // 超时时间
-    this.baseUrl = process.env.VUE_APP_BASE_URL
-    this.headers = { 'Content-Type': 'application/json' }
+    this.baseUrl = url || process.env.VUE_APP_BASE_URL
+    this.headers = { 'Content-Type': 'application/json', ...headers }
     this.queue = {} // 记录请求
   }
   // 合并选项
@@ -110,4 +110,4 @@ class Http {
     })
   }
 }
-export default new Http()
+export default Http
