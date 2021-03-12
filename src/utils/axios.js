@@ -20,7 +20,7 @@ class Http {
   mergeOptions(options) {
     return {
       timeout: this.timeout,
-      baseUrl: this.baseUrl,
+      baseURL: this.baseUrl,
       headers: this.headers,
       ...options
     }
